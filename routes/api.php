@@ -1,8 +1,9 @@
 <?php
 
+use App\Http\Controllers\Api\AccessTokenController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Api\UserController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,6 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::post('/auth/register', [AccessTokenController::class, 'register']);
+Route::post('/auth/login', [AccessTokenController::class, 'login']);
+// Route::delete('/auth/logout', [AccessTokenController::class, 'logout']);
+Route::post('auth/password/email', [AccessTokenController::class , 'sendPasswordResetLinkEmail'])->name('password.email');
+Route::post('auth/password/reset', [AccessTokenController::class , 'resetPassword'])->name('password.reset');
+Route::get('auth/refresh', [AccessTokenController::class, 'refresh'])->middleware('auth:sanctum');
+Route::delete('auth/tokens' , [AccessTokenController::class , 'logout'])->middleware('auth:sanctum');
+Route::apiResource('/User','Api\UserController') ;

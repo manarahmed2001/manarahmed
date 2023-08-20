@@ -1,11 +1,9 @@
 <?php
-
 namespace App\Http\Middleware;
-
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
-
 class isadmin
 {
     /**
@@ -13,12 +11,20 @@ class isadmin
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next )
     {
-        if ($request->user()->is_admin == 0) {
+        
+         /*if (optional($request->user())->is_admin == 0) {
             abort(403);
 
-        }
-        return $next($request);
+ }
+        return $next($request); */
+        
+            if(Auth::user()->is_admin==1) {
+                return $next($request);
+            }
+            else {
+                return redirect('parent')->with('error' ,"you are not admin") ;
+            } 
+       }
     }
-}

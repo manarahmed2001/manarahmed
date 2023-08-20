@@ -37,7 +37,7 @@
 <div class="wrapper">
 
   <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light" >
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -201,6 +201,21 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+               @if (!Auth::check())
+               <li class="nav-header">User Authentication</li>
+               <li class="nav-item">
+                   <a href="{{ route('view.login') }}" class="nav-link">
+                       <i class="fas fa-sign-in-alt"></i>
+                       <p>Login</p>
+                   </a>
+               </li>
+               <li class="nav-item">
+                   <a href="{{ route('register') }}" class="nav-link">
+                       <i class="fas fa-user-plus"></i>
+                       <p>Register</p>
+                   </a>
+               </li>
+           @endif
           <li class="nav-item menu-open">
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -258,6 +273,33 @@
             </ul>
           </li>
 
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+                <i class="fas fa-user"></i>
+              <p>
+               Vendor
+                <i class="right fas fa-angle-left"></i>
+
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('vendors.index') }}" class="nav-link">
+                  <i class="fas fa-list-ul"></i>
+                  <p>Index</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="{{ route('vendors.create') }}" class="nav-link">
+                  <i class="fas fa-plus"></i>
+                  <p>Create</p>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+
 
 
 
@@ -265,34 +307,85 @@
 
           <li class="nav-header"> Content Mangment</li>
 
-                {{-- category --}}
-              {{-- <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="fa-solid fa-bars-sort"></i>
-                  <p>
-                     Category
-                    <i class="right fas fa-angle-left"></i>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+                <i class="fas fa-user"></i>
+              <p>
+               Brand
+                <i class="right fas fa-angle-left"></i>
 
-                  </p>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('brands.index') }}" class="nav-link">
+                  <i class="fas fa-list-ul"></i>
+                  <p>Index</p>
                 </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="" class="nav-link">
-                     <i class="fas fa-list-ul"></i>
-                      <p>Index</p>
-                    </a>
-                  </li>
-
-                  <li class="nav-item">
-                    <a href="" class="nav-link">
-                      <i class="fas fa-plus"></i>
-                      <p>Create</p>
-                    </a>
-                  </li>
-                </ul>
               </li>
- --}}
 
+              <li class="nav-item">
+                <a href="{{ route('brands.create') }}" class="nav-link">
+                  <i class="fas fa-plus"></i>
+                  <p>Create</p>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+                <i class="fas fa-user"></i>
+              <p>
+               Item
+                <i class="right fas fa-angle-left"></i>
+
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('items.index') }}" class="nav-link">
+                  <i class="fas fa-list-ul"></i>
+                  <p>Index</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="{{ route('items.create') }}" class="nav-link">
+                  <i class="fas fa-plus"></i>
+                  <p>Create</p>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+                <i class="fas fa-user"></i>
+              <p>
+               Inventory
+                <i class="right fas fa-angle-left"></i>
+
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('inventories.index') }}" class="nav-link">
+                  <i class="fas fa-list-ul"></i>
+                  <p>Index</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="{{ route('inventories.create') }}" class="nav-link">
+                  <i class="fas fa-plus"></i>
+                  <p>Create</p>
+                </a>
+              </li>
+
+            </ul>
+          </li>
 
           <li class="nav-header">Setting</li>
           <li class="nav-item">

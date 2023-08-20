@@ -63,7 +63,7 @@
 
                         <div class="mb-3">
                             <label for="confirm_password" class="form-label">confirm Password</label>
-                            <input type="password" name="password_confirmation" @class(['form-control','is-invalid' => $errors->has('password')]) id="password" placeholder="enter Password" required>
+                            <input type="password" name="password_confirmation" @class(['form-control','is-invalid' => $errors->has('password_confirmation')]) id="password_confirmation" placeholder="enter Password" required>
                             @error('password')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror

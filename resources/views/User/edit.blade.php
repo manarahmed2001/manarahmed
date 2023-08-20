@@ -12,41 +12,75 @@
 
 @section('content')
 <div class="container">
-    <form action="{{ route('users.update' , $user->id)}}" method="post">
-      @csrf
-      @method('put')
+  <form action="{{ route('users.update', $user->id) }}" method="post">
+    @csrf
+    @method('put')
     <div class="form-floating mb-3">
-      <label for="username">user name</label>
-  <input type="text" class="form-control" id="username"name="username" value="{{$user->username}}">
-  
-</div>
-<div class="form-floating mb-3">
-  <label for="email">Email address</label>
-  <input type="email" class="form-control" id="email"name="email" value="{{$user->email}}">
- </div> 
-<div class="form-floating mb-3">
-  <label for="first_name">first name</label>
-  <input type="text" class="form-control" id="first_name"name="first_name""value="{{$user->first_name}}>
- </div>
-<div class="form-floating mb-3">
-  <label for="last_name">last name</label>
-  <input type="text" class="form-control" id="last_name"name="last_name" value="{{$user->last_name}}">
-</div>
-<div class="form-floating mb-3">
-  <label for="is_admin">is admin</label>
-  <input type="text" class="form-control" id="is_admin"name="is_admin"value="{{$user->is_admin}}">
-</div> 
-<div class="form-floating mb-3">
-  <label for="is_active">is active</label>
-  <input type="text" class="form-control" id="is_active"name="is_active" value="{{$user->is_active}}">
-  </div>
-<div class="form-floating">
- <label for="floatingPassword">Password</label>
- <input type="password" class="form-control" id="floatingPassword"name="floatingPassword">
-</div>
-
-<button type="submit" class="btn btn-primary">edit user</button>
-    </form>
+        <label for="username">Username</label>
+        <input type="text" class="form-control @error('username') is-invalid @enderror" id="username"
+            name="username" value="{{ $user->username }}">
+        @error('username')
+        <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
+    </div>
+    <div class="form-floating mb-3">
+        <label for="email">Email address</label>
+        <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email"
+            value="{{ $user->email }}">
+        @error('email')
+        <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
+    </div>
+    <div class="form-floating mb-3">
+        <label for="first_name">First Name</label>
+        <input type="text" class="form-control @error('first_name') is-invalid @enderror" id="first_name"
+            name="first_name" value="{{ $user->first_name }}">
+        @error('first_name')
+        <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
+    </div>
+    <div class="form-floating mb-3">
+        <label for="last_name">Last Name</label>
+        <input type="text" class="form-control @error('last_name') is-invalid @enderror" id="last_name"
+            name="last_name" value="{{ $user->last_name }}">
+        @error('last_name')
+        <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
+    </div>
+    <div class="form-floating mb-3">
+        <label for="is_admin">Is Admin</label>
+        <input type="text" class="form-control @error('is_admin') is-invalid @enderror" id="is_admin"
+            name="is_admin" value="{{ $user->is_admin }}">
+        @error('is_admin')
+        <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
+    </div>
+    <div class="form-floating mb-3">
+        <label for="is_active">Is Active</label>
+        <input type="text" class="form-control @error('is_active') is-invalid @enderror" id="is_active"
+            name="is_active" value="{{ $user->is_active }}">
+        @error('is_active')
+        <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
+    </div>
+    <div class="form-floating mb-3">
+        <label for="password">Password</label>
+        <input type="password" class="form-control @error('password') is-invalid @enderror" id="password"
+            name="password" placeholder="Leave blank to keep current password">
+        @error('password')
+        <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
+    </div>
+    <div class="form-floating mb-3">
+        <label for="password_confirmation">Confirm Password</label>
+        <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror"
+            id="password_confirmation" name="password_confirmation" placeholder="Confirm Password">
+        @error('password_confirmation')
+        <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
+    </div>
+    <button type="submit" class="btn btn-primary">Edit User</button>
+</form>
 </div>
 @endsection
 

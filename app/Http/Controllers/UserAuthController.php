@@ -62,7 +62,7 @@ class UserAuthController extends Controller
             'password' => [
                 'required',
                 'min:8',
-                'regex:/^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.(_|[^\w])).+$/'
+                //'regex:/^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.(_|[^\w])).+$/'
             ],
         ]);
 
